@@ -22,7 +22,7 @@
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| item_name      | string     | null: false                    |
+| name           | string     | null: false                    |
 | introduction   | text       | null: false                    |
 | category_id    | integer    | null: false                    |
 | condition_id   | integer    | null: false                    |
@@ -56,7 +56,7 @@
 | area_id           | integer          | null: false                    |
 | city              | string           | null: false                    |
 | house_number      | string           | null: false                    |
-| house_name        | string           |/                               |
+| house_name        | string           |                                |
 | phone_number      | string           | null: false                    |
 | buyer             | references       | null: false ,foreign_key: true |
 

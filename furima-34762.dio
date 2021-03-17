@@ -1,6 +1,6 @@
 <mxfile>
     <diagram id="B-JBTVA5cgyC7v5ITZzm" name="ページ1">
-        <mxGraphModel dx="936" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1177" dy="971" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -48,7 +48,7 @@
                 <mxCell id="21" value="addresses" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
                     <mxGeometry x="275" y="630" width="230" height="240" as="geometry"/>
                 </mxCell>
-                <mxCell id="22" value="post_code  (text型,NOT NULL)&#10;&#10;prefecture_id (integer型,NOT NULL)&#10;&#10;city               (text型,NOT NULL)&#10;&#10;house_number  (text型,NOT NULL)&#10;&#10;house_name      (text型,/)&#10;&#10;phone_number   (text型,NOT NULL)&#10;&#10;buyer           (references,NOT NULL)&#10;           " style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="21" vertex="1">
+                <mxCell id="22" value="post_code  (stringt型,NOT NULL)&#10;&#10;area_id (integer型,NOT NULL)&#10;&#10;city               (string型,NOT NULL)&#10;&#10;house_number  (stringt型,NOT NULL)&#10;&#10;house_name      (string型,/)&#10;&#10;phone_number   (string型,NOT NULL)&#10;&#10;buyer           (references,NOT NULL)&#10;         " style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="21" vertex="1">
                     <mxGeometry y="26" width="230" height="214" as="geometry"/>
                 </mxCell>
                 <mxCell id="27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.006;entryY=0.393;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;" edge="1" parent="1" source="6" target="11">
