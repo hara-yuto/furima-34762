@@ -1,24 +1,57 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
 
-Things you may want to cover:
+| Column            | Type   | Options     |
+| ----------------- | ------ | ----------- |
+| nickname          | string | null: false |
+| email             | string | null: false |
+| password          | string | null: false |
+| first_name        | string | null: false |
+| family_name       | string | null: false |
+| first_name_kana   | string | null: false |
+| family_name_kana  | string | null: false |
+| birthday          | date   | null: false |
 
-* Ruby version
 
-* System dependencies
+### Association
+- has_many :items
+- has_many :buyers
 
-* Configuration
+## itemsテーブル
 
-* Database creation
+| Column         | Type       | Options                |
+| -------------- | ---------- | ---------------------- |
+| image          | string     | ActiveStorageで実装    |
+| item_name      | string     | null: false            |
+| introduction   | text       | null: false            |
+| category       | integer    | null: false            |
+| condition      | integer    | null: false            |
+| payer          | integer    | null: false            |
+| area           | integer    | null: false            |
+| day            | integer    | null: false            |
+| price          | integer    | null: false            |
 
-* Database initialization
+### Association
+- has_one : buyers
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## buyersテーブル
 
-* Deployment instructions
+| Column    | Type       | Options     |
+| --------- | ---------- | ----------- |
+| buy_item  | text       | null: false |
 
-* ...
+### Association
+- belongs_to :users
+- has_one :items
+- has_one :addresses
+
+## addressesテーブル
+
+| Column            | Type       | Options     |
+| ----------------- | ---------- | ----------- |
+| shipping_address  | text       | null: false |
+
+### Association
+- has_one :buyers
