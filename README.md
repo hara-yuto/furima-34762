@@ -34,6 +34,7 @@
 
 ### Association
 - has_one : buyer
+- belongs_to : user
 
 
 ## buyersテーブル
@@ -51,12 +52,12 @@
 
 | Column            | Type             | Options                        |
 | ----------------- | ---------------- | ------------------------------ |
-| post_code         | text             | null: false                    |
-| prefecture_id     | integer          | null: false                    |
-| city              | text             | null: false                    |
-| house_number      | text             | null: false                    |
-| house_name        | text             |/                               |
-| phone_number      | text             | null: false                    |
+| post_code         | string           | null: false                    |
+| area_id           | integer          | null: false                    |
+| city              | string           | null: false                    |
+| house_number      | string           | null: false                    |
+| house_name        | string           |/                               |
+| phone_number      | string           | null: false                    |
 | buyer             | references       | null: false ,foreign_key: true |
 
 
