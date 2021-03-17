@@ -2,16 +2,16 @@
 
 ## usersテーブル
 
-| Column            | Type   | Options     |
-| ----------------- | ------ | ----------- |
-| nickname          | string | null: false |
-| email             | string | null: false |
-| password          | string | null: false |
-| first_name        | string | null: false |
-| family_name       | string | null: false |
-| first_name_kana   | string | null: false |
-| family_name_kana  | string | null: false |
-| birthday          | date   | null: false |
+| Column            | Type   | Options                   |
+| ----------------- | ------ | -----------               |
+| nickname          | string | null: false               |
+| email             | string | null: false , unique:true |
+| encrypted_password| string | null: false               |
+| first_name        | string | null: false               |
+| family_name       | string | null: false               |
+| first_name_kana   | string | null: false               |
+| family_name_kana  | string | null: false               |
+| birthday          | date   | null: false               |
 
 
 ### Association
@@ -20,38 +20,45 @@
 
 ## itemsテーブル
 
-| Column         | Type       | Options                |
-| -------------- | ---------- | ---------------------- |
-| image          | string     | ActiveStorageで実装    |
-| item_name      | string     | null: false            |
-| introduction   | text       | null: false            |
-| category       | integer    | null: false            |
-| condition      | integer    | null: false            |
-| payer          | integer    | null: false            |
-| area           | integer    | null: false            |
-| day            | integer    | null: false            |
-| price          | integer    | null: false            |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| item_name      | string     | null: false                    |
+| introduction   | text       | null: false                    |
+| category_id    | integer    | null: false                    |
+| condition_id   | integer    | null: false                    |
+| payer_id       | integer    | null: false                    |
+| area_id        | integer    | null: false                    |
+| day_id         | integer    | null: false                    |
+| price          | integer    | null: false                    |
+| user           | references | null: false, foreign_key: true |
 
 ### Association
-- has_one : buyers
+- has_one : buyer
 
 
 ## buyersテーブル
 
-| Column    | Type       | Options     |
-| --------- | ---------- | ----------- |
-| buy_item  | text       | null: false |
-
+| Column    | Type       | Options                        |
+| --------- | ---------- | ------------------------------ |
+| user      | references | null: false, foreign_key: true |
+| item      | references | null: false, foreign_key: true |
 ### Association
-- belongs_to :users
-- has_one :items
-- has_one :addresses
+- belongs_to :user
+- belongs_to :item
+- has_one :address
 
 ## addressesテーブル
 
-| Column            | Type       | Options     |
-| ----------------- | ---------- | ----------- |
-| shipping_address  | text       | null: false |
+| Column            | Type             | Options                        |
+| ----------------- | ---------------- | ------------------------------ |
+| post_code         | text             | null: false                    |
+| prefecture_id     | integer          | null: false                    |
+| city              | text             | null: false                    |
+| house_number      | text             | null: false                    |
+| house_name        | text             |/                               |
+| phone_number      | text             | null: false                    |
+| buyer             | references       | null: false ,foreign_key: true |
+
 
 ### Association
-- has_one :buyers
+- belongs_to :buyer
