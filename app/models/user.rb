@@ -10,7 +10,7 @@ class User < ApplicationRecord
          validates :password,            format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i}
          validates :birthday
 
-         with_options format: { with: /\A[ぁ-んァ-ン一-龥]/} do
+         with_options format:  { with: /\A[ぁ-んァ-ン一-龥々]/} do
          validates :first_name
          validates :family_name
          end
