@@ -123,13 +123,13 @@ RSpec.describe User, type: :model do
        end
 
        it 'ユーザー本名のフリガナは、全角（カタカナ）での入力が必須であること' do
-        @user.first_name_kana ='aa'
+        @user.first_name_kana ='あ','Ａ','１','漢字'
         @user.valid?
         expect(@user.errors.full_messages).to include( "First name kana is invalid")
        end
 
        it 'ユーザー本名のフリガナは、全角（カタカナ）での入力が必須であること' do
-        @user.family_name_kana ='aaa'
+        @user.family_name_kana ='あ','Ａ','１','漢字'
         @user.valid?
         expect(@user.errors.full_messages).to include( "Family name kana is invalid")
        end
