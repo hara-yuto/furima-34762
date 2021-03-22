@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :item do
-    name         {Faker::Name.name}
-    introduction {Faker::Lorem.sentence}
+    name          { 'サンプル商品' }
+    introduction {'サンプル商品の説明'}
     category_id {2}
     condition_id {2}
     payer_id {2}
