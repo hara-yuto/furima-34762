@@ -3,7 +3,12 @@ class Item < ApplicationRecord
 
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category , :condition , :payer , :area , :delivery_day
+  belongs_to :category 
+  belongs_to :condition
+  belongs_to :payer 
+  belongs_to :area 
+  belongs_to :delivery_day
+
   belongs_to :user
   has_one_attached :image
 
