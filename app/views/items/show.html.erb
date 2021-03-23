@@ -1,6 +1,5 @@
 <%= render partial:'items/header' %>
 
-<%# 商品の概要 %>
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
@@ -25,16 +24,17 @@
       </span>
     </div>
 
-   
-   <% if user_signed_in? && current_user.id == @item.user_id %>
+   <%if user_signed_in?%>
+   <% if current_user.id == @item.user_id %>
     <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
     <p class="or-text">or</p>
     <%= link_to "削除", "#", method: :delete, class:"item-destroy" %>
    
     <%# 商品が売れていない場合はこちらを表示しましょう %>
-   <%elsif user_signed_in? %>
+   <%else%>  
     <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
+   <%end%>
    <%end%>
 
 
@@ -81,7 +81,7 @@
       </div>
     </div>
   </div>
-  <%# /商品の概要 %>
+
 
   <div class="comment-box">
     <form>
@@ -105,9 +105,7 @@
       後ろの商品 ＞
     </a>
   </div>
-  <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
   <a href="#" class="another-item"><%= @item.category.name%>をもっと見る</a>
-  <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
 </div>
 
 <%= render partial:'items/footer' %>
