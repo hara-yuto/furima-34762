@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to :delivery_day
 
   belongs_to :user
+  has_one :buyer
   has_one_attached :image
 
   validates :price,      format: { with: /\A[0-9]+\z/},
