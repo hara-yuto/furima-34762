@@ -9,7 +9,7 @@ class BuyersController < ApplicationController
   end
 
   def create
-    @address=Address.new(address_params)
+    @credit_address=CreditAddress.new(address_params)
     redirect_to root_path
   end
 
