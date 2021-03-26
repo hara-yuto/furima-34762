@@ -4,7 +4,7 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-
+<script type="text/javascript" src="https://js.pay.jp/v1/"></script>
 require("@rails/activestorage").start()
 require("channels")
 require("../price")
