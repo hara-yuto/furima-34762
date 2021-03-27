@@ -11,7 +11,7 @@ class BuyersController < ApplicationController
   end
  
   def create
-    #binding.pry
+    
     @item = Item.find(params[:item_id])
     @credit_address=CreditAddress.new(buyer_params)
  if @credit_address.valid?
@@ -27,11 +27,11 @@ class BuyersController < ApplicationController
 
 
   def buyer_params
-    params.require(:credit_address).permit(:post_code, :area_id, :city, :house_number, :house_name,:phone_number,:user_id,:item_id).merge(user_id: current_user.id,token: params[:token])
+    params.require(:credit_address).permit(:post_code, :area_id, :city, :house_number, :house_name,:phone_number).merge(user_id: current_user.id,token: params[:token],item_id: params[:item_id])
   end
 
   def pay_item
-    Payjp.api_key = "sk_test_570e68d8d6bfb1ae3d3bbb52"  
+    Payjp.api_key = "sk_test_************************"  
     Payjp::Charge.create(
       amount: @item.price,
       card: buyer_params[:token],
@@ -39,7 +39,5 @@ class BuyersController < ApplicationController
     )
 
   end
-
-
 
 end
