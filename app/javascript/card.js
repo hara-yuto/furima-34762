@@ -1,5 +1,5 @@
 const pay = () => {
-  Payjp.setPublicKey("");
+  Payjp.setPublicKey("pk_test_70df07ea83e30d12cd4112dd");
   const form = document.getElementById("charge-form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -22,10 +22,10 @@ const pay = () => {
         const tokenObj = `<input value=${token} name='token' type="hidden"> `;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
       }
-      document.getElementById("credit_address_number").removeAttribute("name");
-      document.getElementById("credit_address_cvc").removeAttribute("name");
-      document.getElementById("credit_address_exp_month").removeAttribute("name");
-      document.getElementById("credit_address_exp_year").removeAttribute("name");
+      document.getElementById("card-number").removeAttribute("name");
+      document.getElementById("card-cvc").removeAttribute("name");
+      document.getElementById("card-exp-month").removeAttribute("name");
+      document.getElementById("card-exp-year").removeAttribute("name");
 
       document.getElementById("charge-form").submit()
     });
