@@ -31,7 +31,7 @@ class BuyersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = "sk_test_************************"  
+    Payjp.api_key = "sk_test_**********************"  
     Payjp::Charge.create(
       amount: @item.price,
       card: buyer_params[:token],
