@@ -13,9 +13,27 @@ RSpec.describe CreditAddress, type: :model do
       it '全て存在していれば登録できる' do
         expect(@credit_address).to be_valid
       end
+
+      it '建物名が抜けていても登録できる' do
+        @credit_address.house_name = ''
+        expect(@credit_address).to be_valid
+      end
     end
 
     context '配送登録ができないとき' do
+
+      it 'user_idが空では登録できないこと' do
+        @credit_address.user_id = nil
+        @credit_address.valid?
+        expect(@credit_address.errors.full_messages).to include()
+      end
+
+      it 'item_idが空では登録できないこと' do
+        @credit_address.item_id = nil
+        @credit_address.valid?
+        expect(@credit_address.errors.full_messages).to include()
+      end
+
       it 'tokenが空では登録できないこと' do
         @credit_address.token = nil
         @credit_address.valid?
@@ -66,6 +84,12 @@ RSpec.describe CreditAddress, type: :model do
 
       it '電話番号が11桁以内でないと登録できない' do
         @credit_address.phone_number = '000000000000'
+        @credit_address.valid?
+        expect(@credit_address.errors.full_messages).to include('Phone number is invalid.')
+      end
+
+      it '電話番号は英数混合では登録できないこと' do
+        @credit_address.phone_number = 'a0a0a0a0a0a'
         @credit_address.valid?
         expect(@credit_address.errors.full_messages).to include('Phone number is invalid.')
       end
