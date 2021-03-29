@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :syori_item, only: [:edit, :update, :destroy]
   before_action :syori_item_buy, only: [:edit, :update, :destroy]
 
   def index
@@ -49,10 +48,6 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
-  end
-
-  def syori_item
-    redirect_to root_path if current_user.id != @item.user.id
   end
 
   def syori_item_buy
