@@ -12,6 +12,8 @@ class CreditAddress
     validates :house_number
     validates :phone_number, format: { with: /\A\d{10}\z|\A\d{11}\z/, message: 'is invalid.' }, allow_blank: true
     validates :phone_number
+    validates :user_id
+    validates :item_id
   end
 
   def save
