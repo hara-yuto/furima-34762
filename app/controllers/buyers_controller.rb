@@ -1,14 +1,13 @@
 class BuyersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :item_params, only: [:index, :create]
+  before_action :rooting, only: [:index, :create]
 
   def index
-    redirect_to root_path if current_user == @item.user
     @credit_address = CreditAddress.new  
   end
 
-  def create
-    redirect_to root_path if current_user == @item.user
+  def create  
     @credit_address = CreditAddress.new(buyer_params)
     if @credit_address.valid?
       pay_item
@@ -20,6 +19,9 @@ class BuyersController < ApplicationController
   end
 
   private
+  def rooting
+    redirect_to root_path if current_user == @item.user
+  end
 
   def item_params
     @item = Item.find(params[:item_id])

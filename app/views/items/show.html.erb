@@ -24,18 +24,17 @@
       </span>
     </div>
 
-   <%if user_signed_in?%>
-   <% if current_user.id == @item.user_id &&@item.buyer.nil?%>
-   
-    <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
-    <p class="or-text">or</p>
-    <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
- 
-    <%elsif @item.buyer.present?%>
-    <%else%> 
-    <%= link_to "購入画面に進む", item_buyers_path(@item.id) ,class:"item-red-btn"%>
+  <%# ボタン表示の有無 %>
+  <% if user_signed_in? && @item.buyer.nil?%>
+<%# 表示されるボタンの種類 %>
+    <% if current_user.id == @item.user_id %>
+      <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
+      <p class="or-text">or</p>
+      <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
+    <% else %> 
+      <%= link_to "購入画面に進む", item_buyers_path(@item.id) ,class:"item-red-btn"%>
+    <%end%>
 
-   <%end%>
    <%end%>
 
 
