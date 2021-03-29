@@ -20,6 +20,7 @@ class BuyersController < ApplicationController
 
   private
   def rooting
+    @item.buyer.present?
     redirect_to root_path if current_user == @item.user
   end
 
