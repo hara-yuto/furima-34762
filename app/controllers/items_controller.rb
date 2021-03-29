@@ -51,6 +51,6 @@ class ItemsController < ApplicationController
   end
 
   def syori_item_buy
-    redirect_to root_path if current_user.id == @item.user.id && @item.buyer.present?
+    redirect_to root_path if current_user.id == @item.user.id || @item.buyer.present?
   end
 end
