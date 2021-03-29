@@ -1,15 +1,15 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!  , except: [:index,:show]
-  before_action :set_item, only: [:show,:edit,:update,:destroy]
-  before_action :syori_item,only: [:edit,:update,:destroy]
-  before_action :syori_item_buy,only: [:edit,:update,:destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :syori_item, only: [:edit, :update, :destroy]
+  before_action :syori_item_buy, only: [:edit, :update, :destroy]
 
   def index
-    @items =Item.order(created_at: :desc)
+    @items = Item.order(created_at: :desc)
   end
 
   def new
-    @item =Item.new
+    @item = Item.new
   end
 
   def create
@@ -22,19 +22,16 @@ class ItemsController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
-
   end
 
   def update
-    
-    if @item.update(item_params) 
+    if @item.update(item_params)
       redirect_to item_path
     else
-      render "edit"
+      render 'edit'
     end
   end
 
@@ -43,12 +40,11 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
-
-
   private
 
   def item_params
-    params.require(:item).permit(:image,:name,:introduction,:category_id,:condition_id,:payer_id,:area_id,:delivery_day_id,:price).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :name, :introduction, :category_id, :condition_id, :payer_id, :area_id, :delivery_day_id,
+                                 :price).merge(user_id: current_user.id)
   end
 
   def set_item
@@ -56,15 +52,10 @@ class ItemsController < ApplicationController
   end
 
   def syori_item
-    if current_user.id != @item.user.id
-     redirect_to root_path
-    end
+    redirect_to root_path if current_user.id != @item.user.id
   end
 
   def syori_item_buy
-    if current_user.id == @item.user.id && @item.buyer.present?
-     redirect_to root_path
-    end
+    redirect_to root_path if current_user.id == @item.user.id && @item.buyer.present?
   end
-  
 end
